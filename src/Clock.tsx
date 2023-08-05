@@ -18,7 +18,8 @@ const StartButton = styled.button`
 
 const ValidationMessage = styled.div`
   color: red;
-  text-align: start;
+  // align-self: flex-start;
+  text-align: left;
 `;
 
 
@@ -71,8 +72,10 @@ function Clock() {
       </div>
       <List items={items}/>
   </> : <>
+    <div>
     <InitialTaskInput type="text" value={currentTaskTitle} onChange={handleInputChange} placeholder="What to do now"/>
     <ValidationMessage>{showvalidationError? "Please enter your first task." : ""}</ValidationMessage> 
+    </div>   
     <StartButton onClick={handleStartButtonClick}>Start Time Tracking</StartButton> 
   </>
     
