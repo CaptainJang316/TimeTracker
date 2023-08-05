@@ -5,9 +5,12 @@ interface ListProps {
 }
 
 const List:React.FC<ListProps> = ({items}) => {
+  const reversedList = [...items].reverse();
+  console.log("reversedList: " + reversedList);
+  // items.reverse();
   return (
     <ul>
-      {items.map((item, index) => (
+      {reversedList.map((item, index) => (
         <li key={index}>{item}</li>
       ))}
     </ul>
