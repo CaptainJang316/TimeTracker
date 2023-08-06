@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
 import List from './List';
 import styled from 'styled-components';
 
@@ -34,6 +34,7 @@ function Clock() {
   const [showvalidationError, setShowvalidationError] = useState(false);
   const [itemTitle, setItemTitle] = useState<string>("");
 
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const intervalID = setInterval(() => {
@@ -63,6 +64,14 @@ function Clock() {
     } else setShowvalidationError(true);
   }
 
+  const handleEnterKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log("event.key: ", event.key);
+    if (event.key === 'Enter') {
+      // Enter 키를 누를 때, 버튼을 클릭한 것으로 처리합니다.
+      handleStartButtonClick();
+    }
+  };
+
   return (
     startFlag? <>
       <div className="clock" onClick={() => handleButtonClick(formattedTime)}>
@@ -73,7 +82,14 @@ function Clock() {
       <List items={items}/>
   </> : <>
     <div>
-    <InitialTaskInput type="text" value={currentTaskTitle} onChange={handleInputChange} placeholder="What to do now"/>
+    <InitialTaskInput 
+      type="text" 
+      value={currentTaskTitle} 
+      onChange={handleInputChange} 
+      placeholder="What to do now"
+      ref={inputRef}
+      onKeyDown={handleEnterKeyDown}
+        />
     <ValidationMessage>{showvalidationError? "Please enter your first task." : ""}</ValidationMessage> 
     </div>   
     <StartButton onClick={handleStartButtonClick}>Start Time Tracking</StartButton> 
