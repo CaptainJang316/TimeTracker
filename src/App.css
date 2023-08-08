@@ -14,26 +14,6 @@
   color: white;
 }
 
-.clock {
-  height: 400px;
-  width: 400px;
-  font-size: 36px;
-  color: black;
-  border-radius: 50%;
-  background-color: darkgrey;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.clock:hover {
-  background-color: darkgoldenrod;
-  color:aliceblue;
-  /* font-weight: bold; */
-}
-
-
 /* .App {
   text-align: center;
 }

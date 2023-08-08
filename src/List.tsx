@@ -6,7 +6,7 @@ interface ListProps {
 
 const List:React.FC<ListProps> = ({items}) => {
   const reversedList = [...items].reverse();
-  console.log("reversedList: " + reversedList);
+  // console.log("reversedList: " + reversedList);
   // items.reverse();
   return (
     <ul>
