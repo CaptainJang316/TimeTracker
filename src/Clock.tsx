@@ -23,8 +23,9 @@ const ValidationMessage = styled.div`
 `;
 
 const CurrentTaskBox = styled.div`
-  height: 400px;
-  width: 500px;
+  position: relative;
+  height: 250px;
+  width: 400px;
   font-size: 36px;
   color: black;
   border-radius: 10%;
@@ -40,6 +41,27 @@ const CurrentTaskBox = styled.div`
     color:aliceblue;
   }
 `;
+
+const TimeBoard = styled.span`
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.7rem;
+`
+
+const TaskTitle = styled.span`
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+`
+
+const TimeCount = styled.span`
+  font-size: 3rem;
+`
 
 
 // let startTime = new Date().toLocaleTimeString();
@@ -123,9 +145,9 @@ function Clock() {
   return (
     changeTaskFlag != 0? <>
       <CurrentTaskBox>
-        {currentTask}<br/><br/>
-        {formattedTimeCount}
-        <span>{startTime.toLocaleTimeString()} | {currentTime.toLocaleTimeString()}</span>
+        <TaskTitle>{currentTask}</TaskTitle>
+        <TimeCount>{formattedTimeCount}</TimeCount>
+        <TimeBoard>{startTime.toLocaleTimeString()} | {currentTime.toLocaleTimeString()}</TimeBoard>
       </CurrentTaskBox>
       <div>
         <TaskInput 
